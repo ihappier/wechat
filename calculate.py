@@ -26,7 +26,7 @@ def compare_balls(red_balls, blue_balls):
     if find_data(red_balls_final) == []:
         return True
     else:
-        blue_balls_compare = find_data(red_balls_final)[0][0].split()
+        blue_balls_compare = str_to_list(find_data(red_balls_final)[0][0])
         if blue_balls != blue_balls_compare:
             return True
 

@@ -11,11 +11,11 @@ def format_ball_information(content):
 
 def format_rewards_information(content):
     if len(content[0]) > 0:
-        format_content_red = "红球中奖" + str(len(content[0])) + "个,分别为" + list_to_str(content[0]) + "\n"
+        format_content_red = "红球中奖" + str(len(content[0])) + "个,号码为" + list_to_str(content[0]) + "\n"
     else:
         format_content_red = "红球都被狗吃了"
-    if len(content[1]) >0:
-        format_content_blue = "蓝球中奖" + str(len(content[1])) + "个,分别为" + list_to_str(content[1]) + "\n"
+    if len(content[1]) > 0:
+        format_content_blue = "蓝球中奖" + str(len(content[1])) + "个,号码为" + list_to_str(content[1]) + "\n"
     else:
         format_content_blue = "蓝球都被狗吃了"
     format_content = format_content_red + format_content_blue
@@ -36,7 +36,7 @@ def reply_dou_balls():
 
 def reply_help():
     """帮助信息格式"""
-    reply = "输入双色球或1获得双色球预测\n输入历史或5获得最近5期双色球开奖结果\n"
+    reply = "输入双色球获得双色球预测\n输入历史获得最近5期双色球开奖结果\n"
     return reply
 
 
