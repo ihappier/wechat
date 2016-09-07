@@ -61,19 +61,26 @@ def reply_reward(flag):
 def reply_content(content):
     reply = "欢迎使用本公众号\n" \
             "请输入帮助或help获取使用指南\n"
-    print(content)
-    if "帮助" in content:
+    content_resolved = content_resolve(content)
+    if "帮助" in content_resolved:
         reply = reply_help()
-    if "双色球" in content:
+    if "双色球" in content_resolved:
         reply = reply_balls("双色球")
-    if "大乐透" in content:
+    if "大乐透" in content_resolved:
         reply = reply_balls("大乐透")
-    if "双色球历史" in content:
+    if "双色球" in content_resolved and "历史" in content_resolved:
         reply = history("双色球", 5)
-    if "双色球中奖" in content:
+    if "双色球" in content_resolved and "中奖" in content_resolved:
         reply = reply_reward("双色球")
-    if "大乐透中奖" in content:
+    if "大乐透" in content_resolved and "中奖" in content_resolved:
         reply = reply_reward("大乐透")
-    if "大乐透历史" in content:
+    if "大乐透" in content_resolved and "历史" in content_resolved:
         reply = history("大乐透", 5)
     return reply
+
+
+def content_resolve(content_to_reply):
+    """结巴分词分析提取微信获得的内容"""
+    content = jieba.cut(content_to_reply)
+    content_resolved = ','.join(content).split(',')
+    return content_resolved
