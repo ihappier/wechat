@@ -2,6 +2,7 @@ from flask import Flask, request, make_response
 import hashlib
 import xml.etree.ElementTree as ET
 from replymessage import *
+import re
 
 app = Flask(__name__)
 
@@ -28,7 +29,7 @@ def wechat_auth():
         fromUserName = xml.find('FromUserName').text
         createTime = xml.find('CreateTime').text
         msgType = xml.find('MsgType').text
-        if msgType != 'text':
+        if msgType != 'image':
             reply = '''<xml>
             <ToUserName><![CDATA[%s]]></ToUserName>
             <FromUserName><![CDATA[%s]]></FromUserName>
@@ -40,10 +41,12 @@ def wechat_auth():
                    toUserName,
                    createTime,
                    'text',
-                   '未知格式')
-            return reply
-        content = xml.find('Content').text
-        print(content)
+                   '不支持图片格式')
+        #   return reply
+        if msgType == 'text':
+            content = xml.find('Content').text
+        if msgType == 'voice':
+            content = re.findall('[\u4e00-\u9fa5]+', xml.find('Recognition').text)[0]
         msgId = xml.find('MsgId').text
         content_reply = reply_content(content)
         reply = '''
@@ -54,7 +57,7 @@ def wechat_auth():
                         <MsgType><![CDATA[%s]]></MsgType>
                         <Content><![CDATA[%s]]></Content>
                         </xml>
-                        ''' % (fromUserName, toUserName, createTime, msgType, content_reply)
+                        ''' % (fromUserName, toUserName, createTime, 'text', content_reply)
         return reply
 
 

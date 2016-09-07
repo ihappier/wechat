@@ -5,52 +5,69 @@
     </schema>
     <table id="2" parent="1" name="calculate_dou_balls" />
     <table id="3" parent="1" name="number" />
-    <table id="4" parent="1" name="number_dou_balls" />
-    <column id="5" parent="2" name="id_no">
+    <table id="4" parent="1" name="number_calculate" />
+    <table id="5" parent="1" name="number_dou_balls" />
+    <column id="6" parent="2" name="id_no">
       <data-type>VARCHAR(20)(0,-1)|12</data-type>
     </column>
-    <column id="6" parent="2" name="red_balls">
+    <column id="7" parent="2" name="red_balls">
       <data-type>VARCHAR (20)(0,-1)|12</data-type>
     </column>
-    <column id="7" parent="2" name="blue_balls">
+    <column id="8" parent="2" name="blue_balls">
       <data-type>VARCHAR (20)(0,-1)|12</data-type>
     </column>
-    <column id="8" parent="2" name="date">
+    <column id="9" parent="2" name="date">
       <data-type>VARCHAR (20)(0,-1)|12</data-type>
     </column>
-    <key id="9" parent="2">
+    <key id="10" parent="2">
       <columns>id_no</columns>
       <primary>1</primary>
     </key>
-    <column id="10" parent="3" name="id_no">
+    <column id="11" parent="3" name="id_no">
       <data-type>VARCHAR(20)(0,-1)|12</data-type>
     </column>
-    <column id="11" parent="3" name="red_balls">
+    <column id="12" parent="3" name="red_balls">
       <data-type>VARCHAR(20)(0,-1)|12</data-type>
     </column>
-    <column id="12" parent="3" name="blue_balls">
+    <column id="13" parent="3" name="blue_balls">
       <data-type>VARCHAR(20)(0,-1)|12</data-type>
     </column>
-    <column id="13" parent="3" name="date">
+    <column id="14" parent="3" name="date">
       <data-type>VARCHAR(20)(0,-1)|12</data-type>
     </column>
-    <key id="14" parent="3">
+    <key id="15" parent="3">
       <columns>id_no</columns>
       <primary>1</primary>
     </key>
-    <column id="15" parent="4" name="id_no">
+    <column id="16" parent="4" name="id_no">
+      <data-type>VARCHAR (20)(0,-1)|12</data-type>
+    </column>
+    <column id="17" parent="4" name="red_ball">
+      <data-type>VARCHAR (20)(0,-1)|12</data-type>
+    </column>
+    <column id="18" parent="4" name="blue_ball">
+      <data-type>VARCHAR (20)(0,-1)|12</data-type>
+    </column>
+    <column id="19" parent="4" name="date">
+      <data-type>VARCHAR (20)(0,-1)|12</data-type>
+    </column>
+    <key id="20" parent="4">
+      <columns>id_no</columns>
+      <primary>1</primary>
+    </key>
+    <column id="21" parent="5" name="id_no">
       <data-type>VARCHAR(20)(0,-1)|12</data-type>
     </column>
-    <column id="16" parent="4" name="red_balls">
+    <column id="22" parent="5" name="red_balls">
       <data-type>VARCHAR(20)(0,-1)|12</data-type>
     </column>
-    <column id="17" parent="4" name="blue_balls">
+    <column id="23" parent="5" name="blue_balls">
       <data-type>VARCHAR(20)(0,-1)|12</data-type>
     </column>
-    <column id="18" parent="4" name="date">
+    <column id="24" parent="5" name="date">
       <data-type>VARCHAR(20)(0,-1)|12</data-type>
     </column>
-    <key id="19" parent="4">
+    <key id="25" parent="5">
       <columns>id_no</columns>
       <primary>1</primary>
     </key>
