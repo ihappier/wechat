@@ -68,7 +68,6 @@ def reply_content(content):
     reply = "欢迎使用本公众号\n" \
             "请输入帮助获取使用指南\n"
     content_resolved = content_resolve(content)
-    print(content_resolved)
     if "帮助" in content_resolved:
         reply = reply_help()
     if "双色球" in content_resolved:

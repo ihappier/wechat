@@ -72,7 +72,6 @@ def wechat_auth():
         if msgType == 'voice':
             content = xml.find('Recognition').text
         msgId = xml.find('MsgId').text
-        content = content.decode('utf-8')
         content_reply = reply_content(content)
         reply = '''
                         <xml>
