@@ -22,7 +22,7 @@ def compare_rewards(flag):
     if values_calculate == []:
         return False
     else:
-        return [compare_balls(str_to_list(values_calculate[0][1]),
+        return [id_no, compare_balls(str_to_list(values_calculate[0][1]),
                               str_to_list(values_rewards[0][1])),
                 compare_balls(str_to_list(values_calculate[0][2]),
                               str_to_list(values_rewards[0][2])),

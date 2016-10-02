@@ -11,16 +11,22 @@ def format_ball_information(content):
     return format_content
 
 
-def format_rewards_information(content):
-    if len(content[0]) > 0:
-        format_content_red = "红球中奖" + str(len(content[0])) + "个,号码为" + list_to_str(content[0]) + "\n"
+def format_rewards_information(content, flag):
+    # if len(content[1]) > 0:
+    #     format_content_red = "红球中奖" + str(len(content[1])) + "个,号码为" + list_to_str(content[1]) + "\n"
+    # else:
+    #     format_content_red = "红球都被狗吃了\n"
+    # if len(content[2]) > 0:
+    #     format_content_blue = "蓝球中奖" + str(len(content[2])) + "个,号码为" + list_to_str(content[2]) + "\n"
+    # else:
+    #     format_content_blue = "蓝球都被狗吃了\n"
+    # format_content = flag + "\n第 " + content[0] + " 期\n" + format_content_red + format_content_blue
+    if len(content[2]) > 0 or len(content[1]) > 3:
+        format_content_red = "红球中奖" + str(len(content[1])) + "个,号码为" + list_to_str(content[1]) + "\n"
+        format_content_blue = "蓝球中奖" + str(len(content[2])) + "个,号码为" + list_to_str(content[2]) + "\n"
+        format_content = flag + "\n第 " + content[0] + " 期\n" + format_content_red + format_content_blue
     else:
-        format_content_red = "红球都被狗吃了"
-    if len(content[1]) > 0:
-        format_content_blue = "蓝球中奖" + str(len(content[1])) + "个,号码为" + list_to_str(content[1]) + "\n"
-    else:
-        format_content_blue = "蓝球都被狗吃了\n"
-    format_content = format_content_red + format_content_blue
+        format_content = "没有中奖"
     return format_content
 
 
@@ -28,10 +34,10 @@ def history(flag, no):
     """公众号获取双色球历史回复"""
     if flag == "双色球":
         content = get_nearest_double_history(no)
-        return format_ball_information(content)
+        return flag + "近5期开奖情况：\n" + format_ball_information(content)
     if flag == "大乐透":
         content = get_nearest_letou_history(no)
-        return format_ball_information(content)
+        return flag + "近5期开奖情况：\n" + format_ball_information(content)
 
 
 def reply_balls(flag):
@@ -52,7 +58,7 @@ def reply_help():
 
 def reply_reward(flag):
     if compare_rewards(flag):
-        reply = format_rewards_information(compare_rewards(flag))
+        reply = format_rewards_information(compare_rewards(flag), flag)
     else:
         reply = "Sorry,上次木有买彩票哦"
     return reply
@@ -60,8 +66,9 @@ def reply_reward(flag):
 
 def reply_content(content):
     reply = "欢迎使用本公众号\n" \
-            "请输入帮助或help获取使用指南\n"
+            "请输入帮助获取使用指南\n"
     content_resolved = content_resolve(content)
+    print(content_resolved)
     if "帮助" in content_resolved:
         reply = reply_help()
     if "双色球" in content_resolved:

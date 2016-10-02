@@ -1,4 +1,6 @@
+# coding=utf-8
 import re
+import datetime
 from base_function import *
 
 base_double_red_balls = ['01', '02', '03', '04', '05', '06', '07', '08', '09',

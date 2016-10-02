@@ -1,5 +1,5 @@
+# coding=utf-8
 import sqlite3
-import datetime
 
 
 def create_database(name="data.db"):
